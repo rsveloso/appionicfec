@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Projetos FEC
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm">
+    <div>
+      <ion-item>
+        <ion-input (keyup)="findProject(form.value)" name="projeto" type="text" placeholder="Pesquise pelo nome do projeto!" ngModel required></ion-input>
+      </ion-item>
+    </div>
+    <ion-list>
+      <ion-item (click)="viewProject(item.id)" *ngFor="let item of projetos">
+        {{item.title}}
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <ion-fab vertical="bottom" class="add" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openModal()"  expand="full">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
